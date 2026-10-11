@@ -1,5 +1,7 @@
 # Sajay Chandran — portfolio
 
+Live site: https://sajaychandran.me
+
 Personal portfolio of Sajay Chandran, a BCA student (Cyber Security & Ethical Hacking) in Bangalore.
 Static site: plain HTML and CSS, no build step and no dependencies.
 
