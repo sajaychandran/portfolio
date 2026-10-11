@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frisyn — Sajay Chandran</title>
+<meta name="description" content="Frisyn is an anonymous social app for Android, built solo with React Native and Firebase, with a custom authentication system. Features, architecture, engineering decisions and development journey.">
+<meta name="author" content="Sajay Chandran">
+<link rel="canonical" href="https://sajaychandran.me/frisyn.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sajaychandran.me/frisyn.html">
+<meta property="og:title" content="Frisyn — an anonymous social app, built solo">
+<meta property="og:description" content="React Native + Firebase app on Google Play, with a custom authentication system. Features, architecture and engineering decisions.">
+<meta property="og:image" content="https://sajaychandran.me/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;400;500&display=swap" rel="stylesheet">
+<noscript><style>.rise{opacity:1!important;transform:none!important}</style></noscript>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">SAJAY CHANDRAN<span>.</span></a>
+    <nav class="nav" aria-label="On this page">
+      <a href="#overview">Overview</a>
+      <a href="#app">App</a>
+      <a href="#stack">Stack</a>
+      <a href="#auth">Auth</a>
+      <a href="#journey">Journey</a>
+      <a href="#links">Links</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ 1. OVERVIEW ============ -->
+<section class="page-hero" id="overview" aria-labelledby="top-h">
+  <div class="wrap grid">
+    <a class="crumb mono" href="index.html#frisyn">← Portfolio</a>
+    <div class="col wide">
+      <div class="project-head">
+        <h1 id="top-h">Frisyn</h1>
+        <span class="tagline">Step Into Silence</span>
+        <span class="badge">Live on Google Play</span>
+      </div>
+      <p class="lede">An anonymous social app for Android for posting, chatting and sharing moods. It is designed to collect no email address, phone number, username or real name: your identity is a sequential account number, like <code>User #7</code>.</p>
+      <dl class="facts-row">
+        <div><dt>Role</dt><dd>Solo, end to end</dd></div>
+        <div><dt>Status</dt><dd>Public release, v1.0.1</dd></div>
+        <div><dt>Platform</dt><dd>Android</dd></div>
+        <div><dt>Built with</dt><dd>React Native, Expo, Firebase</dd></div>
+      </dl>
+      <div class="btns">
+        <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.frisyn.app" target="_blank" rel="noopener noreferrer">Google Play ↗</a>
+        <a class="btn" href="https://frisyn.app/" target="_blank" rel="noopener noreferrer">Website ↗</a>
+        <a class="btn" href="https://github.com/sajaychandran/anonymous-device-auth" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. SCREENSHOTS AND CORE FEATURES ============ -->
+<section class="sec" id="app" aria-labelledby="app-h">
+  <div class="wrap grid">
+    <p class="eyebrow mono">The app</p>
+    <div class="col wide rise">
+      <h2 id="app-h">Screens and features</h2>
+      <p class="lede">I designed and built every screen, the backend behind it, and the legal pages and store listing around it.</p>
+
+      <ul class="shots" aria-label="Frisyn screenshots" tabindex="0">
+        <li><figure><img src="assets/welcome.webp" width="480" height="1066" loading="lazy" decoding="async" alt="Frisyn welcome screen with the tagline Step Into Silence and options to get started or sign in."><figcaption><b>Welcome</b>Start or sign in.</figcaption></figure></li>
+        <li><figure><img src="assets/signup.webp" width="480" height="1066" loading="lazy" decoding="async" alt="Frisyn account creation screen asking only for a password, with an age and terms checkbox, and a note that no email, phone number or username is required."><figcaption><b>Sign up</b>Password only.</figcaption></figure></li>
+        <li><figure><img src="assets/homef.webp" width="480" height="1066" loading="lazy" decoding="async" alt="Frisyn home feed showing anonymous posts attributed to sequential account numbers, with emoji reaction counts and comment counts."><figcaption><b>Feed</b>Account numbers.</figcaption></figure></li>
+        <li><figure><img src="assets/reaction.webp" width="480" height="1066" loading="lazy" decoding="async" alt="Frisyn reaction picker sheet with a grid of emoji and an option to add any custom emoji."><figcaption><b>Reactions</b>Any emoji.</figcaption></figure></li>
+        <li><figure><img src="assets/profilewithm.webp" width="480" height="1066" loading="lazy" decoding="async" alt="Frisyn profile screen showing the account number as the identity, a 24-hour mood status with an expiry countdown, and post, reaction and comment counts."><figcaption><b>Profile</b>24-hour mood status.</figcaption></figure></li>
+        <li><figure><img src="assets/chat.webp" width="480" height="1066" loading="lazy" decoding="async" alt="Frisyn one-to-one chat conversation between two anonymous accounts."><figcaption><b>Chat</b>One-to-one.</figcaption></figure></li>
+      </ul>
+
+      <div class="two block">
+        <div>
+          <h3>Social</h3>
+          <ul class="bullets">
+            <li>Anonymous feed with a post length limit</li>
+            <li>Emoji reactions</li>
+            <li>Nested comments and replies</li>
+            <li>Real-time direct chat</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Profile</h3>
+          <ul class="bullets">
+            <li>Selectable preset avatars</li>
+            <li>24-hour mood status, optional to show</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Safety and policy</h3>
+          <ul class="bullets">
+            <li>In-app reporting for posts, comments, users and chat messages</li>
+            <li>18+ consent at sign-up, with links to the policies</li>
+            <li>Privacy policy, terms, child-safety policy and account-deletion page</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Account and operations</h3>
+          <ul class="bullets">
+            <li>In-app account deletion through a server-side function</li>
+            <li>Force-update version gate</li>
+            <li>Hardened Firestore security rules</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. STACK AND ARCHITECTURE ============ -->
+<section class="sec" id="stack" aria-labelledby="stack-h">
+  <div class="wrap grid">
+    <p class="eyebrow mono">Stack &amp; architecture</p>
+    <div class="col wide rise">
+      <h2 id="stack-h">How it's put together</h2>
+      <ol class="chain" aria-label="Architecture" tabindex="0">
+        <li><b>React Native app</b></li><li><b>Cloud Functions</b></li><li><b>Firestore</b></li>
+      </ol>
+      <p class="block" style="max-width:var(--measure)">The app talks to Cloud Functions for authentication and account actions, and to Firestore under security rules for app data. Audit logs go to a separate Firebase project with append-only rules.</p>
+      <dl class="facts block">
+        <div><dt>Client</dt><dd>React Native + Expo SDK 54, Android-first</dd></div>
+        <div><dt>Backend</dt><dd>Firebase: Firestore, Cloud Functions, custom token auth</dd></div>
+        <div><dt>Auth functions</dt><dd>Node.js on Cloud Functions, Argon2id password hashing</dd></div>
+        <div><dt>Hosting</dt><dd>Netlify: marketing site, privacy policy, terms, child-safety policy, account-deletion page</dd></div>
+        <div><dt>Release</dt><dd>EAS Build; Google Play Console internal, closed and production tracks</dd></div>
+        <div><dt>Development</dt><dd>GitHub Codespaces, with AI tools helping write code under my review and testing</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. CUSTOM AUTH AND DECISIONS ============ -->
+<section class="sec" id="auth" aria-labelledby="auth-h">
+  <div class="wrap grid">
+    <p class="eyebrow mono">Technical highlight</p>
+    <div class="col wide rise">
+      <div class="auth">
+        <h2 id="auth-h">Custom authentication</h2>
+        <p class="lede">I wanted a custom identity model, an account number and a password, so I built authentication on Cloud Functions instead of using standard provider sign-in. It gives me full control over what is stored.</p>
+
+        <ol class="steps" aria-label="Signup flow">
+          <li><strong>Password and device fingerprint</strong><span>The app hashes device identifiers (SHA-512) and sends the result with the password.</span></li>
+          <li><strong>Server-side re-hash</strong><span>The server runs the fingerprint through HMAC with a server-side secret before storing it.</span></li>
+          <li><strong>Account number</strong><span>A Firestore transaction assigns the next sequential number.</span></li>
+          <li><strong>Password hash</strong><span>Argon2id with OWASP interactive-tier parameters: 19 MiB memory, 2 iterations, parallelism 1.</span></li>
+          <li><strong>Recovery code</strong><span>A one-time code is generated, shown once and stored only as a hash.</span></li>
+          <li><strong>Session</strong><span>The server mints a Firebase custom token and the user is signed in.</span></li>
+        </ol>
+      </div>
+
+      <h3 class="sub-h">Selected decisions</h3>
+      <ul class="decisions">
+        <li>
+          <h3>Argon2id for passwords</h3>
+          <p>My first version used SHA-512, which is too fast for passwords. Argon2id is memory-hard, so I switched to it, tuned to the OWASP interactive tier. Lazy re-hashing upgrades old hashes at next login, so I can raise the parameters later without forcing resets.</p>
+        </li>
+        <li>
+          <h3>Transactional account numbers</h3>
+          <p>Two simultaneous signups could read the same counter and receive the same account number. A Firestore transaction reads and increments it atomically. I found the race condition during development and fixed it this way.</p>
+        </li>
+        <li>
+          <h3>Device fingerprints handled on the server</h3>
+          <p>The app sends a hashed fingerprint and the server re-hashes it with a secret kept in server-side configuration. That lets signup limit accounts per device without storing anything that names the user.</p>
+        </li>
+        <li>
+          <h3>Recovery code instead of email reset</h3>
+          <p>With no email or phone to reset through, signup issues a one-time code (<code>XXXX-XXXX-XXXX</code>, generated with <code>crypto.randomInt</code>). It is stored only as a SHA-512 hash and treated like a password.</p>
+        </li>
+        <li>
+          <h3>A version gate that fails open</h3>
+          <p>If the remote version config can't be read, users get in anyway. A backend hiccup shouldn't lock people out of an app they already use, so I chose availability over strict enforcement.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. JOURNEY ============ -->
+<section class="sec" id="journey" aria-labelledby="journey-h">
+  <div class="wrap grid">
+    <p class="eyebrow mono">Development journey</p>
+    <div class="col wide rise">
+      <h2 id="journey-h">From prototype to Google Play</h2>
+      <ol class="chain" aria-label="Timeline" tabindex="0">
+        <li><b>Local prototype</b></li><li><b>Firebase</b></li><li><b>Custom auth</b></li>
+        <li><b>Closed testing</b></li><li><b>Production · Oct 2026</b></li>
+      </ol>
+      <div class="two block">
+        <div>
+          <h3>Problems solved</h3>
+          <ul class="bullets">
+            <li>Avatar changes not reaching older posts</li>
+            <li>A user-number race condition, fixed with transactions</li>
+            <li>Mood status expiring continuously</li>
+            <li>Duplicate chat creation</li>
+            <li>An error boundary so one crash doesn't take down the app</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Testing and release</h3>
+          <p>Frisyn started as a local AsyncStorage prototype, moved to Firebase, then to the custom auth architecture.</p>
+          <p>Google Play's closed-testing process ran for 14 days. I shipped updates during it from tester feedback (chat message reporting, a logo fix, faster auth), then received production access and released publicly in October 2026.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. LINKS ============ -->
+<section class="sec" id="links" aria-labelledby="links-h">
+  <div class="wrap grid">
+    <p class="eyebrow mono">Links</p>
+    <div class="col">
+      <h2 id="links-h">Try it, read the code</h2>
+      <div class="contact-links">
+        <a href="https://play.google.com/store/apps/details?id=com.frisyn.app" target="_blank" rel="noopener noreferrer"><strong>Google Play</strong><span>Live ↗</span></a>
+        <a href="https://frisyn.app/" target="_blank" rel="noopener noreferrer"><strong>Website</strong><span>frisyn.app ↗</span></a>
+        <a href="https://github.com/sajaychandran/anonymous-device-auth" target="_blank" rel="noopener noreferrer"><strong>Auth reference code</strong><span>github.com/sajaychandran/anonymous-device-auth ↗</span></a>
+      </div>
+      <p class="block" style="color:var(--ink-soft);font-size:var(--fs-small)">The GitHub repository is a standalone reference implementation of the device-binding authentication design. The production app uses its own tuned Argon2id settings, transactional account numbering and Firebase custom tokens, which are not in the repository.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap mono">
+    <span>Sajay Chandran — Bangalore, India</span>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.rise');
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.01 });
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
